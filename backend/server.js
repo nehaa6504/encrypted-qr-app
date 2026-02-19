@@ -133,6 +133,15 @@ app.get("/view/:filename", (req, res) => {
 
   res.sendFile(filePath);
 });
+const path = require("path");
+
+// Serve frontend folder
+app.use(express.static(path.join(__dirname, "../frontend")));
+
+// Root route fix
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+});
 
 
 const PORT = process.env.PORT || 5000;
