@@ -24,10 +24,11 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, uploadPath);
   },
-  filename: function (req, file, cb) {
-    const uniqueName = Date.now() + "-" + file.originalname;
-    cb(null, uniqueName);
-  },
+ filename: function (req, file, cb) {
+  const cleanName = file.originalname.replace(/\s+/g, "-");
+  const uniqueName = Date.now() + "-" + cleanName;
+  cb(null, uniqueName);
+},
 });
 
 const upload = multer({ storage });
