@@ -57,8 +57,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
     return res.status(400).json({ error: "No file uploaded" });
   }
 
-  const BASE_URL =
-    process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
+  const BASE_URL = `${req.protocol}://${req.get("host")}`;
 
   const fileUrl = `${BASE_URL}/file/${req.file.filename}`;
 
