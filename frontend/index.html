@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Encrypted QR Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<h1>🔐 Encrypted QR Code System</h1>
+
+<div class="container">
+<section>
+  <h2>Upload File & Generate Link</h2>
+
+  <input type="file" id="linkFileInput" />
+
+  <button onclick="generateLink()">Generate Link</button>
+
+  <p>Generated Link</p>
+  <textarea id="generatedLink" readonly></textarea>
+</section>
+
+  <section>
+    <h2>Encrypt & Generate QR</h2>
+    <textarea id="textInput" placeholder="Enter text (optional)"></textarea>
+    <input type="file" id="fileInput" accept="image/*,video/*"  />
+    <button type="button" onclick="removeFile()">Remove Selected File</button>
+    <button onclick="encryptData()">Generate Message & Key for QR </button>
+
+    
+   <p>Encrypted Message</p>
+<textarea id="cipherText"></textarea>
+
+<p>Encryption Key</p>
+<textarea id="secretKey"></textarea>
+
+
+  </section>
+
+  <section>
+    <h2>Decrypt & Restore QR</h2>
+    <textarea id="decryptCipher" placeholder="Paste encrypted message"></textarea>
+    <textarea id="decryptKey" placeholder="Paste encryption key"></textarea>
+    <button onclick="decryptData()">Decrypt & Generate QR</button>
+
+    <div id="qrResult"></div>
+  </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
