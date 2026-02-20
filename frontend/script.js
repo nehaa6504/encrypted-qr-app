@@ -10,7 +10,7 @@ async function encryptData() {
     formData.append("text", text);
   }
 
-  const res = await fetch("http://localhost:5000/encrypt", {
+  const res = await fetch("/encrypt", {
     method: "POST",
     body: formData,
   });
@@ -25,7 +25,7 @@ async function decryptData() {
   const cipherText = document.getElementById("decryptCipher").value;
   const key = document.getElementById("decryptKey").value;
 
-  const res = await fetch("http://localhost:5000/decrypt", {
+  const res = await fetch("/decrypt", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ cipherText, key }),
